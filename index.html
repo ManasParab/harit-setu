@@ -4,28 +4,48 @@
     <title>Harit-Setu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        * { box-sizing: border-box; }
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background-color: #e0e0e0;
+        }
+
+        /* Center everything vertically + horizontally */
         body {
             display: flex;
+            flex-direction: column; /* stack credentials above tablet */
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #e0e0e0;
-            margin: 0;
-            font-family: sans-serif;
-            overflow: hidden; /* Prevent scrollbars if tablet is larger than viewport */
+            overflow: hidden;
+        }
+
+        /* Credentials text */
+        .credentials {
+            margin-bottom: 20px; /* spacing above tablet frame */
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 8px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            font-size: 16px;
+            font-weight: 600;
+            color: #111;
+            white-space: nowrap;
+            backdrop-filter: blur(4px);
         }
 
         .tablet-frame {
             position: relative;
-            width: 1024px;  /* Typical tablet width (e.g., iPad Pro 11-inch) */
-            height: 580px; /* Typical tablet height */
-            border: 12px solid #333; /* Darker, thicker bezel for a tablet feel */
-            border-radius: 30px; /* Slightly less rounded than a phone */
+            width: 1024px;   /* Typical tablet width (e.g., iPad Pro 11-inch) */
+            height: 580px;   /* Typical tablet height */
+            border: 12px solid #333;
+            border-radius: 30px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            background-color: #333; /* Bezel color */
-            padding: 8px; /* Inner padding for the bezel */
-            box-sizing: border-box;
-            display: flex; /* Use flex to center the screen */
+            background-color: #333;
+            padding: 8px;
+            display: flex;
             justify-content: center;
             align-items: center;
         }
@@ -35,39 +55,53 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            border-radius: 20px; /* Rounded corners for the screen itself */
+            border-radius: 20px;
             background-color: white;
         }
-        
-        /* Front-facing camera in the bezel */
+
         .camera {
             position: absolute;
-            top: 20px; /* Position from the top edge of the frame */
-            left: 50%; /* Center horizontally */
-            transform: translateX(-50%); /* Adjust for true centering */
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 12px;
             height: 12px;
-            background-color: #1a1a1a; /* Dark color for the lens */
-            border-radius: 50%; /* Makes it a perfect circle */
-            z-index: 10; /* Ensures it's above other elements */
-            border: 1px solid #555; /* Slight border for definition */
+            background-color: #1a1a1a;
+            border-radius: 50%;
+            z-index: 10;
+            border: 1px solid #555;
         }
 
         .responsive-iframe {
             width: 100%;
             height: 100%;
             border: none;
+            display: block;
+        }
+
+        /* Responsive tweak */
+        @media (max-width: 1100px) {
+            .tablet-frame { width: 90vw; height: calc(90vw * 0.566); }
+        }
+
+        @media (max-width: 520px) {
+            .credentials { font-size: 14px; padding: 6px 10px; margin-bottom: 12px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Credentials outside tablet, centered above -->
+    <div class="credentials">
+        Username: <strong>admin</strong> &nbsp;|&nbsp; Password: <strong>admin@123</strong>
+    </div>
+
     <div class="tablet-frame">
-        <div class="camera"></div> <div class="screen">
-            <iframe class="responsive-iframe" src="https://drink-gaming-10361796.figma.site"></iframe>
+        <div class="camera"></div>
+        <div class="screen">
+            <iframe class="responsive-iframe" src="https://drink-gaming-10361796.figma.site" title="Harit-Setu preview"></iframe>
         </div>
     </div>
 
 </body>
-
 </html>
